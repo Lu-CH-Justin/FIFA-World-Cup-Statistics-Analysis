@@ -241,9 +241,17 @@ where age_at_wc in (select max(age_at_wc) from age_at_wc);
 
 
 -- Youngest Player
+
 select pfname, plname, age_at_wc
 from age_at_wc
 where age_at_wc in (select min(age_at_wc) from age_at_wc);
+
+
+-- Most Apperances
+
+select pfname, plname, wc_counts
+from players
+order by wc_counts desc;
 
 
 /* =============================================================================
