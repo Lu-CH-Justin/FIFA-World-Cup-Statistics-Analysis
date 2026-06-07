@@ -230,7 +230,7 @@ from goals_counts;
 create view age_at_wc as 
 select * , latest_wc - year(bod) as age_at_wc 
 from players 
-where bod != 0000-00-00 and year(bod) < latest_wc;
+where bod is not null and year(bod) < latest_wc;
 
 
 -- Oldest player
