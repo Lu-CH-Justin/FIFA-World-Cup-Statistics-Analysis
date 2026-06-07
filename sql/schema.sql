@@ -15,7 +15,8 @@ plname varchar(20),
 bod date,
 position varchar(20),
 wc_counts int,
-list_of_wc varchar(20)
+list_of_wc varchar(20),
+teamid varchar(20)
 );
 
 create table goals (
