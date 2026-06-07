@@ -9,3 +9,7 @@ add type char(10);
 
 update tournaments
 set type = case when year % 2 = 0 then 'Men' else 'Women' end;
+
+update players
+set bod = null
+where bod = 0000-00-00;
