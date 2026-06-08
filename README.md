@@ -34,6 +34,18 @@ The FIFA World Cup Database is a comprehensive collection of historical tourname
 
 ![Image Alt](https://www.image2url.com/r2/default/images/1780835897149-83f78e18-97b9-4e56-a4ee-9d9767b25ed9.png)
 
+## SQL Concepts Demonstrated
+
+- Joins
+- Aggregate Functions
+- Common Table Expressions (CTEs)
+- Window Functions
+- Views
+- Data Modeling
+- Database Normalization
+- Ranking Functions
+- Analytical Reporting
+
 ## Analysis Questions
 
 ### Goal Scoring Analysis
