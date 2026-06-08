@@ -14,7 +14,7 @@ The source dataset contains many tables and attributes. For this project, I sele
 
 ## Motivation
 
-As I continue developing my skills in data analytics, I wanted to work on a project that would allow me to apply SQL in a practical setting while exploring a topic I am genuinely passionate about. As a football fan, the FIFA World Cup provides a fascinating dataset filled with historical records, player performances, team achievements, and tournament trends spanning decades.
+As I continue developing my skills in data analytics, I wanted to work on a project that would allow me to apply SQL in a practical setting while exploring a topic I am genuinely passionate about. As a football fan, the FIFA World Cup provides a great dataset filled with historical records, player performances, team achievements, and tournament trends spanning decades.
 
 Through this project, I designed and analyzed a World Cup database using SQL, with the goal of transforming raw data into meaningful insights. The project applies database design and analytical SQL techniques to uncover historical trends, player performance patterns, and tournament-level insights from FIFA World Cup data.
 
