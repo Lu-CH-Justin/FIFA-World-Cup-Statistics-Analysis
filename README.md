@@ -3,7 +3,7 @@
 ![Image Alt](https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/f015/live/d2e52270-2c4a-11f1-934f-036468834728.jpg.webp)
 
 ## 
-**Tools Used**: MySQL, Python, Excel
+**Tools Used**: MySQL, Python (Pandas, SQLAlchemy)
 
 **Dataset used**: [The Fjelstul World Cup Database](https://github.com/jfjelstul/worldcup)
 
@@ -32,7 +32,8 @@ The FIFA World Cup Database is a comprehensive collection of historical tourname
 
 ## Database Schema
 
-![Image Alt](https://www.image2url.com/r2/default/images/1780835897149-83f78e18-97b9-4e56-a4ee-9d9767b25ed9.png)
+<img width="1085" height="819" alt="image" src="https://github.com/user-attachments/assets/b0f2b1dd-d846-454d-b059-a4db07dd829e" />
+
 
 ## SQL Concepts Demonstrated
 
@@ -91,16 +92,20 @@ The FIFA World Cup Database is a comprehensive collection of historical tourname
 ### Top scorer per World Cup
 ```SQL
 with goals_stats as (
-select g.tid, p.pid, p.pfname, p.plname, count(*) as goals,
-dense_rank() over (partition by tid order by count(*) desc) as rnk
-from goals g join players p
-on g.pid = p.pid and g.og = 0
-group by g.tid, p.pid
-order by tid, goals desc
+	select m.tournament_id,
+	g.player_id,
+	count(*) as goals,
+	dense_rank() over (partition by m.tournament_id order by count(*) desc) as rnk
+	from goals g join matches m
+	on g.match_id = m.id and g.og = 0
+	group by m.tournament_id, g.player_id
+	order by m.tournament_id, goals desc
 )
-select * 
-from goals_stats 
-where rnk = 1;
+select t.year, p.given_name, p.family_name, g.goals 
+from goals_stats g join players p
+on p.id = g.player_id and rnk = 1
+join tournaments t
+on g.tournament_id = t.id;
 ```
 Result:
 
@@ -111,7 +116,7 @@ Result:
 ```SQL
 select t.region, count(*) as goals 
 from teams t join goals g 
-on t.teamid = g.teamid and g.og = 0
+on t.id = g.team_id and g.og = 0
 group by t.region 
 order by goals desc;
 ```
@@ -122,15 +127,10 @@ Result:
 
 ### Average goals per match
 ```SQL
-with goals_by_match as (
-select g.tid, g.mid, count(*) as goals
-from goals g join matches m
-on g.mid = m.mid
-group by g.tid, g.mid
-)
-select t.year, round(avg(goals),2) as avg_goals_per_match
-from goals_by_match g join tournaments t
-on g.tid = t.tid
+select t.year,
+round(sum(home_score + away_score) / count(distinct m.id),2) as avg_goals_per_match
+from matches m join tournaments t
+on m.tournament_id = t.id
 group by t.year;
 ```
 
@@ -144,7 +144,7 @@ select
 case 
 	when minutes between 0 and 45 then 'first half'
 	when minutes between 46 and 90 then 'second half'
-    else 'extra time'
+    else 'extra time / stoppage'
 end as parts,
     count(*) as bookings
 from bookings
@@ -158,11 +158,12 @@ Result:
 ### Running total goals by World Cup
 ```SQL
 with goals_counts as (
-select t.year, count(*) as goals
-from goals g join tournaments t
-on g.tid = t.tid
-group by t.year
-order by t.year
+	select t.year, count(*) as goals
+	from goals g join matches m
+	on g.match_id = m.id
+	join tournaments t
+	on m.tournament_id = t.id
+	group by t.year
 )
 select year, goals, sum(goals) over (order by year) as run_total_goals
 from goals_counts;
@@ -174,11 +175,10 @@ Result:
 
 ### Average goals per match (Men vs Women)
 ```SQL
-select t.type, round(count(*) / count(distinct g.mid),2) as avg_goals_per_match
-from goals g join matches m
-on g.mid = m.mid
-join tournaments t
-on g.tid = t.tid
+select t.type,
+round(sum(m.home_score + m.away_score) / count(distinct m.id),2) as avg_goals_per_match
+from matches m join tournaments t
+on m.tournament_id = t.id
 group by t.type;
 ```
 
