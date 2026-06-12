@@ -109,7 +109,7 @@ on g.tournament_id = t.id;
 ```
 Result:
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/85cbd147-1f6b-46d3-8957-2b9cb297b328" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/88e5c367-dad5-4641-9811-387bfdd00431" />
 
 
 ### Top goal scoring regions
@@ -122,7 +122,7 @@ order by goals desc;
 ```
 Result:
 
-<img width="300" alt="image" src="https://github.com/user-attachments/assets/f715f85b-c1bc-4531-97ec-96c367672853" />
+<img width="300" alt="image" src="https://github.com/user-attachments/assets/c978dbaf-5f9a-4102-a419-c4408146fc49" />
 
 
 ### Average goals per match
@@ -136,7 +136,7 @@ group by t.year;
 
 Result:
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/d3d75728-270b-4e77-b697-f01c6134c7e4" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/e269ec48-2325-4b31-bb3a-504fa11a39bd" />
 
 ### Booking by half
 ```SQL
@@ -153,7 +153,8 @@ group by parts;
 
 Result:
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/f872668b-3fb7-4181-a28d-0fb6c33d9278" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/58034f85-5b97-4122-80af-969e576b1326" />
+
 
 ### Running total goals by World Cup
 ```SQL
@@ -171,7 +172,7 @@ from goals_counts;
 
 Result:
 
-<img alt="image" src="https://github.com/user-attachments/assets/953f4d4c-7158-43ba-8d1b-7b0b7ba1785c" width='500'/>
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/16e567a9-e104-4e9a-a226-c04b131e2d4f" />
 
 ### Average goals per match (Men vs Women)
 ```SQL
@@ -184,9 +185,9 @@ group by t.type;
 
 Result:
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/4c699c59-24f8-47d3-be76-2642a422c95f" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/a9694fb7-64c8-44b2-8b06-5e53bc20344c" />
 
-### The complete set of 28 analysis queries can be found in `sql/analysis.sql`
+### The complete set of 28 analysis queries can be found in `analysis.sql`
 
 ## Key Findings
 
