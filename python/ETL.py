@@ -22,9 +22,9 @@ def transform_teams(df):
 
 def transform_players(df):
     position_col = ["goal_keeper", "defender", "midfielder", "forward"]
-    df["position"] = df[position_col].idxmax(axis=1)                                                                                # Determine position base on which position column is True
-    df = df.replace(["not available"], pd.NA)                                                                                       # Replace birth_date "not available" with Null
-    df["latest_wc"] = df["list_tournaments"].apply(lambda x: max(map(int, str(x).split(","))) if pd.notna(x) else None)             # Find latest wc participated by finding the max year in list_tournaments
+    df["position"] = df[position_col].idxmax(axis=1)                                                                                                # Determine position base on which position column is True
+    df = df.replace(["not available"], pd.NA)                                                                                                       # Replace birth_date "not available" with Null
+    df["latest_wc"] = df["list_tournaments"].apply(lambda x: max(map(int, str(x).split(","))) if pd.notna(x) else None)                             # Find latest wc participated by finding the max year in list_tournaments
     df = df[["player_id", "family_name", "given_name", "birth_date", "count_tournaments", "list_tournaments", "latest_wc", "position"]]
     df.columns = ["id", "family_name", "given_name", "bod", "wc_counts", "list_of_wc", "latest_wc", "position"]
     return df
@@ -47,7 +47,7 @@ def transform_goals(df):
 
 def transform_bookings(df):
     booking_col = ["yellow_card", "second_yellow_card", "red_card"]
-    df["booking"] = df[booking_col].idxmax(axis=1)                                                                                   # Determine booking type based on which booking column is True
+    df["booking"] = df[booking_col].idxmax(axis=1)                                                                                                   # Determine booking type based on which booking column is True
     df = df[["match_id", "team_id", "player_id", "minute_regulation", "booking"]]
     df.columns = ["match_id", "team_id", "player_id", "minutes", "booking"]
     return df
