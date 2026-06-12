@@ -235,10 +235,10 @@ Result:
 
 ## Key Findings
 
-- Brazil emerged as the highest-scoring nation in World Cup history.
+- Brazil recorded the highest number of goals in World Cup history.
+- Europe produced the largest share of World Cup goals among all regions.
 - Goal scoring was more frequent in the second half than in the first half.
-- Host nations won only a small percentage of World Cups despite the perceived home advantage.
-- Forwards accounted for the majority of goals scored across tournaments.
+- Host nations won only a small percentage of World Cups despite the home advantage.
 - Men's and Women's World Cups exhibited different scoring and disciplinary patterns.
 
 ## Conclusion
