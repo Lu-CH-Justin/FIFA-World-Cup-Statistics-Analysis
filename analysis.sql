@@ -93,10 +93,11 @@ group by parts;
    
 -- Matches per stage
 
-select tournament_id, stage_name, count(*) as matches 
-from matches 
-group by tournament_id, stage_name 
-order by tournament_id desc, matches desc;
+select t.year, m.stage_name, count(*) as matches 
+from matches m join tournaments
+on m.tournament_id = t.id
+group by t.year, m.stage_name 
+order by t.year desc, matches desc;
 
 
 -- Most goals in a single match
