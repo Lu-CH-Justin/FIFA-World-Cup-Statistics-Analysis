@@ -55,7 +55,7 @@ def transform_bookings(df):
 def load(df, table):
     df.to_sql(table, disk_engine, if_exists='append', index = False)
 
-Tables = {
+tables = {
     "teams": transform_teams,
     "players": transform_players,
     "tournaments": transform_tournaments,
@@ -64,7 +64,7 @@ Tables = {
     "bookings": transform_bookings
 }
 
-for table, transform in Tables.items():
+for table, transform in tables.items():
     df = extract(table)
     df = transform(df)
     load(df, table)
