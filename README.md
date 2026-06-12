@@ -3,7 +3,7 @@
 ![Image Alt](https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/f015/live/d2e52270-2c4a-11f1-934f-036468834728.jpg.webp)
 
 ## 
-**Tools Used**: Excel, MySQL
+**Tools Used**: MySQL, Python, Excel
 
 **Dataset used**: [The Fjelstul World Cup Database](https://github.com/jfjelstul/worldcup)
 
