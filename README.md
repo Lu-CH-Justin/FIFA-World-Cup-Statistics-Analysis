@@ -34,18 +34,62 @@ The FIFA World Cup Database is a comprehensive collection of historical tourname
 
 <img width="1085" height="819" alt="image" src="https://github.com/user-attachments/assets/b0f2b1dd-d846-454d-b059-a4db07dd829e" />
 
+## ETL Process
 
-## SQL Concepts Demonstrated
+To automate data ingestion and preparation, a Python ETL pipeline was developed using Pandas and SQLAlchemy.
 
+### Extract
+
+* Retrieved CSV datasets directly from the Fjelstul World Cup Database GitHub repository.
+* Loaded tournament, team, player, match, goal, and booking data into Pandas DataFrames.
+
+### Transform
+
+* Selected only the columns relevant to the project schema.
+* Renamed columns to align with database naming conventions.
+* Derived player positions from positional indicators.
+* Created a `latest_wc` field to identify each player's most recent World Cup appearance.
+* Classified tournaments as Men's or Women's competitions.
+* Standardized and cleaned missing or unavailable values.
+
+### Load
+
+* Loaded transformed datasets into a normalized MySQL database using SQLAlchemy.
+* Enforced primary key and foreign key relationships through the database schema.
+* Prepared the data for analytical SQL querying.
+
+## Skills Demonstrated
+
+- ETL Pipeline Development
+- Data Cleaning & Transformation
+- Data Modeling
+- Database Normalization
 - Joins
 - Aggregate Functions
 - Common Table Expressions (CTEs)
 - Window Functions
 - Views
-- Data Modeling
-- Database Normalization
 - Ranking Functions
-- Analytical Reporting
+
+## Project Workflow
+
+Raw CSV Files
+
+↓
+
+Python ETL (Pandas)
+
+↓
+
+MySQL Relational Database
+
+↓
+
+SQL Analysis Queries
+
+↓
+
+Insights & Findings
 
 ## Analysis Questions
 
@@ -201,4 +245,4 @@ Result:
 
 Through the analysis of historical FIFA World Cup data, several interesting patterns and trends emerged. The project identified the most prolific goal scorers, highest-scoring teams and regions, tournament-specific top scorers, and differences in scoring patterns across player positions and match periods. The analysis also revealed insights into disciplinary trends, host nation performance, player demographics, and long-term scoring trends throughout World Cup history.
 
-By comparing Men's and Women's FIFA World Cups, the project highlighted differences in scoring rates, disciplinary records, and tournament outcomes while providing a broader perspective on the evolution of international football competitions. Overall, the project demonstrates how historical football data can be used to uncover meaningful patterns, compare performances across eras, and provide a deeper understanding of the factors that have shaped the FIFA World Cup throughout its history.
+In addition to analytical querying, the project demonstrates a complete data workflow by integrating Python-based ETL processes with relational database design and SQL analysis. This approach enabled raw World Cup data to be transformed into a structured analytical database capable of supporting meaningful exploration and reporting.
