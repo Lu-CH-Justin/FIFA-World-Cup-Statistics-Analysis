@@ -3,6 +3,7 @@
    ==================================== */
    
 -- Top goal scorers of all time
+
 select p.id, p.given_name, p.family_name, count(*) as goals 
 from players p join goals g 
 on p.id = g.player_id and g.og = 0
@@ -129,6 +130,7 @@ order by minutes;
 
 
 -- Bookings by match
+
 select m.id, count(b.match_id) as bookings
 from matches m left join bookings b
 on m.id = b.match_id
@@ -222,6 +224,7 @@ from goals_counts;
    ==================================== */
    
 -- Age view
+
 create view age_at_wc as 
 select * , latest_wc - year(bod) as age_at_wc 
 from players 
@@ -236,6 +239,7 @@ where age_at_wc in (select max(age_at_wc) from age_at_wc);
 
 
 -- Youngest Player
+
 select given_name, family_name, age_at_wc
 from age_at_wc
 where age_at_wc in (select min(age_at_wc) from age_at_wc);
@@ -262,6 +266,7 @@ group by t.type;
 
 
 -- Average bookings per match
+
 select t.type, count(b.match_id) / count(distinct m.id) as avg_bookings_per_match 
 from matches m join tournaments t
 on m.tournament_id = t.id
@@ -285,6 +290,7 @@ group by t.type;
 
 
 -- Host win percentage
+
 select type,
 round(100 * (sum(
 case 
